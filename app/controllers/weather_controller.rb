@@ -1,5 +1,17 @@
 class WeatherController < ApplicationController
-  respond_to :json
+
+  def index
+    # For now, assume Austin, TX
+    w_api = Wunderground.new(ENV['WUNDERGROUND_API_KEY'])
+    data = w_api.conditions_for('TX', 'Austin')
+    @weather = Weather.new
+    @weather.current_temp_f = data['current_observation']['temp_f']
+    puts @weather
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @weather }
+    end
+  end
 
   def forecast
     w_api = setup_call
@@ -24,9 +36,9 @@ class WeatherController < ApplicationController
 
     def respond(data, element)
       if @query_param
-        respond_with data[element][@query_param]
+        render json: data[element][@query_param]
       else
-        respond_with data[element]
+        render json: data[element]
       end
     end
 end

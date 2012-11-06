@@ -1,0 +1,8 @@
+<div id="weathers"></div>
+
+<script type="text/javascript">
+  $(function() {
+    window.router = new WhichWidget.Routers.WeathersRouter({weathers: [<%= @weather.to_json.html_safe -%>]});
+    Backbone.history.start();
+  });
+</script>
