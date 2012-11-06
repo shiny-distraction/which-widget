@@ -20,3 +20,5 @@ doc/
 *~
 *.swp
 .idea
+
+config/database.yml
