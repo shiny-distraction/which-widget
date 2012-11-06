@@ -6,6 +6,7 @@ class WeatherController < ApplicationController
     data = w_api.conditions_for('TX', 'Austin')
     @weather = Weather.new
     @weather.current_temp_f = data['current_observation']['temp_f']
+    @weather.id = "1"
     puts @weather
     respond_to do |format|
       format.html # index.html.erb
