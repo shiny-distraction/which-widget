@@ -18,3 +18,5 @@ gem 'jquery-rails'
 gem "rails-backbone"
 
 gem 'wunderground'
+
+gem 'devise'

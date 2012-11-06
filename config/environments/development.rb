@@ -34,4 +34,11 @@ WhichWidget::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # For Devise, forces application not to access DB or load models when
+  # precompiling your assets
+  config.assets.initialize_on_precompile = false
+
+  # For Devise, configure mailer
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 end
